@@ -13,7 +13,7 @@ while($test -lt 3)
         netsh interface set interface name="Wi-Fi" admin=DISABLED
         Start-Sleep 4
         netsh interface set interface name="Wi-Fi" admin=ENABLED
-        sleep 90
+        Start-Sleep 90
     }
 }
 Write-Output "Program ukončen"
