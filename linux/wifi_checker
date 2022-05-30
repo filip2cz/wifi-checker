@@ -1,7 +1,7 @@
 #!/bin/bash
 while :
 do
-   if ! [ "`ping -c 1 google.com`" ]; then
+   if ! [ "`ping -c 1 8.8.8.8`" ]; then
       nmcli networking off
       sleep 5
       nmcli networking on
