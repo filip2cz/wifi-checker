@@ -1,5 +1,5 @@
 # wifi-checker
-checks the functionality of the internet connection via wifi and restarts the wifi in case of malfunction
+Checks the functionality of the internet connection via wifi and restarts the wifi in case of malfunction.
 
 ## How to run
 
