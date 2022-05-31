@@ -17,7 +17,7 @@ Or you can specify the exact path to the program (e.g. /home/user/Documents/scri
 
 If you are unable to start the program, you need to allow it to run with the following command: chmod 777 ./wifi_checker
 
-Tested on Ubuntu 22.04, Linux Mint 22.3, openSUSE Tumbleweed 20220530, PopOS 22.04
+Current version tested on PopOS 22.04, previous versions tested on Ubuntu 22.04, Linux Mint 22.3, GeckoLinux Rolling 220509 and openSUSE Tumbleweed 220104, but most Linux distributions should be supported.
 
 #### Integration as a service into systemd
 Just set the path to the program in the wifi_checker.service file and then paste the wifi_checker.service file into the /etc/systemd/system folder.
