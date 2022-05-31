@@ -1,14 +1,24 @@
 #!/bin/bash
-while :
+TEST=0
+LOCALE=$(locale | grep LANG=)
+while [ "$TEST <= 3" ]
 do
    if ! [ "`ping -c 1 8.8.8.8`" ]; then
       nmcli networking off
       sleep 5
       nmcli networking on
-      echo Networking service restarted due to no ping response from google.com.
+      if [ $LOCALE == "LANG=cs_CZ.UTF-8" ]; then
+         echo Síť byla restartována z důvodu neúspěšného pingu na 8.8.8.8
+      else
+         echo Networking service restarted due to no ping response from 8.8.8.8
+      fi
       sleep 30
    else
-      echo Networking service running without any problem.
+      if [ $LOCALE == "LANG=cs_CZ.UTF-8" ]; then
+         echo Síť funguje bez jakýchkoliv problémů.
+      else
+         echo Networking service running without any problem.
+      fi
       sleep 30
    fi
 done
