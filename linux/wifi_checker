@@ -1,27 +1,46 @@
 #!/bin/bash
 TEST=0
 LOCALE=$(locale | grep LANG=)
-while [ "$TEST <= 3" ]
+while [ $TEST -lt 3 ]
 do
    if ! [ "`ping -c 1 8.8.8.8`" ]; then
+      let "TEST+=1"
       nmcli networking off
       sleep 5
       nmcli networking on
       if [ $LOCALE == "LANG=cs_CZ.UTF-8" ]; then
-         echo Síť byla restartována z důvodu neúspěšného pingu na 8.8.8.8
+         echo Síť byla restartována z důvodu neúspěšného pingu na 8.8.8.8, $TEST. pokus ze 3.
       else
-         echo Networking service restarted due to no ping response from 8.8.8.8
+         echo Networking service restarted due to no ping response from 8.8.8.8, $TEST. attempt from 3.
       fi
-      sleep 30
    else
+      TEST=0
       if [ $LOCALE == "LANG=cs_CZ.UTF-8" ]; then
          echo Síť funguje bez jakýchkoliv problémů.
       else
          echo Networking service running without any problem.
       fi
-      sleep 30
    fi
+   sleep 30
 done
+if [ $LOCALE == "LANG=cs_CZ.UTF-8" ]; then
+   echo -n "Program byl ukončen z důvodu: "
+else
+   echo -n "The programme was terminated due to: "
+fi
+if [ $TEST -ge 3 ]; then
+   if [ $LOCALE == "LANG=cs_CZ.UTF-8" ]; then
+      echo "3 neúspěšné pokusy o restart sítě za sebou."
+   else
+      echo "3 failed network restart attempts in a row."
+   fi
+else
+   if [ $LOCALE == "LANG=cs_CZ.UTF-8" ]; then
+      echo "důvod nebylo možné ověřit."
+   else
+      echo "the reason could not be verified."
+   fi
+fi
 
 # created by filip2cz
 # github: https://github.com/filip2cz/wifi-checker
