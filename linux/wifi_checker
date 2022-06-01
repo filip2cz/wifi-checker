@@ -1,6 +1,10 @@
 #!/bin/bash
 TEST=0
 LOCALE=$(locale | grep LANG=)
+OS=$(uname)
+if ! [ "$OS" == "Linux" ]; then
+   echo "Warning: this script is designed for Linux."
+fi
 while [ $TEST -lt 3 ]
 do
    if ! [ "`ping -c 1 8.8.8.8`" ]; then

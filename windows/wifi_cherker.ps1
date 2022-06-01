@@ -1,4 +1,11 @@
 ﻿$test = 0
+if($IsLinux -eq $true){
+    Write-Output "Warning: you running Linux, but this is not the Linux version."
+    Write-Output "You can download the Linux version here: https://github.com/filip2cz/wifi-checker/tree/main/linux"
+}
+if($IsMacOS -eq $true){
+    Write-Output "Warning: you running MacOS, but MacOS is not supported yet."
+}
 while($test -lt 3)
 {
     if(Test-Connection 8.8.8.8 -Quiet){
@@ -16,3 +23,6 @@ while($test -lt 3)
     }
 }
 Write-Output "Program ukončen"
+
+# created by filip2cz
+# github: https://github.com/filip2cz/wifi-checker
